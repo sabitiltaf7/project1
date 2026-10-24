@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Kids Academy Dobian - Learn. Grow. Succeed.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==========================================
+           COLOR PALETTE & CSS VARIABLES
+           ========================================== */
+        :root {
+            --primary-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --header-bg: #0f172a;
+            --top-bar-bg: #0284c7;
+            --top-bar-text: #ffffff;
+            --navy-blue: #1e3a8a;
+            --accent-gold: #f59e0b;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --border-color: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Theme Variables */
+        body.dark-mode {
+            --primary-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --header-bg: #020617;
+            --border-color: #334155;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ==========================================
+           BASE STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==========================================
+           TOP INFO STRIP
+           ========================================== */
+        .top-strip {
+            background-color: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-strip-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .top-info span, .top-info a {
+            color: var(--top-bar-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ==========================================
+           HEADER & NAVIGATION
+           ========================================== */
+        header {
+            background-color: var(--header-bg);
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .branding {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--top-bar-bg), var(--navy-blue));
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .brand-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .theme-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-call {
+            background: var(--accent-gold);
+            color: #0f172a;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-call:hover {
+            background: #eab308;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           HERO SLIDER SECTION (Text & Gradients Only)
+           ========================================== */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 50px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 90px 20px;
+            text-align: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-1 {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+
+        .slide-2 {
+            background: linear-gradient(135deg, #065f46 0%, #0f766e 100%);
+        }
+
+        .slide-3 {
+            background: linear-gradient(135deg, #4c1d95 0%, #312e81 100%);
+        }
+
+        .slide h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            max-width: 800px;
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 650px;
+            color: #e2e8f0;
+        }
+
+        .slide-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .hero-btn-primary {
+            background: var(--top-bar-bg);
+            color: #fff;
+        }
+
+        .hero-btn-primary:hover {
+            background: #0369a1;
+        }
+
+        .hero-btn-whatsapp {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .hero-btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        /* Slider Controls */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .prev-arrow { left: 20px; }
+        .next-arrow { right: 20px; }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: #ffffff;
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* ==========================================
+           STYLISH ANNOUNCEMENTS ROW (2 BOXES)
+           ========================================== */
+        .announcements-section {
+            margin-bottom: 60px;
+        }
+
+        .announcement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .announce-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--top-bar-bg);
+            transition: var(--transition);
+        }
+
+        .announce-card.helpdesk {
+            border-top-color: var(--accent-gold);
+        }
+
+        .announce-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .announce-header i {
+            font-size: 1.5rem;
+            color: var(--top-bar-bg);
+        }
+
+        .helpdesk .announce-header i {
+            color: var(--accent-gold);
+        }
+
+        .announce-header h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+        }
+
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .notice-title {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .notice-date {
+            font-size: 0.8rem;
+            background: var(--primary-bg);
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+
+        .helpdesk-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-row i {
+            color: var(--top-bar-bg);
+            margin-top: 4px;
+        }
+
+        /* ==========================================
+           DAILY ATTENDANCE BOARD (TABLE FOR 22)
+           ========================================== */
+        .attendance-section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .table-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .table-top-bar {
+            background: var(--navy-blue);
+            color: #ffffff;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .attendance-table th {
+            background: rgba(0, 0, 0, 0.03);
+            color: var(--text-main);
+            padding: 14px 20px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .attendance-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .attendance-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .badge-present {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+        }
+
+        .badge-absent {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
+
+        /* ==========================================
+           FOOTER SECTION
+           ========================================== */
+        footer {
+            background: var(--header-bg);
+            color: #cbd5e1;
+            padding-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--top-bar-bg);
+            margin-top: 4px;
+        }
+
+        .copyright-bar {
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN (MOBILE & TABLET)
+           ========================================== */
+        @media (max-width: 900px) {
+            .announcement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .slide h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-strip-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-main {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide h2 {
+                font-size: 1.6rem;
+            }
+
+            .slide p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP INFO STRIP -->
+    <div class="top-strip">
+        <div class="container top-strip-content">
+            <div class="top-info">
+                <span><i class="fa-solid fa-location-dot"></i> Moh, Miangan Dobian Swabi</span>
+                <a href="tel:03356391367"><i class="fa-solid fa-phone"></i> 0335-6391367</a>
+                <a href="https://wa.me/923105423365"><i class="fa-brands fa-whatsapp"></i> 0310-5423365</a>
+            </div>
+            <div>
+                <span><i class="fa-solid fa-clock"></i> Mon - Sat: 8:00 AM - 2:00 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header>
+        <div class="container header-main">
+            <div class="branding">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Smart Kids Academy</h1>
+                    <p>Learn. Grow. Succeed.</p>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#notices">Notices</a></li>
+                    <li><a href="#attendance">Attendance</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-btn" id="themeToggle">
+                    <i class="fa-solid fa-moon"></i> <span>Dark</span>
+                </button>
+                <a href="tel:03356391367" class="btn-call"><i class="fa-solid fa-phone"></i> Call Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SLIDER SECTION (Text & Gradients Only) -->
+    <section class="hero-section" id="home">
+        <div class="slider-wrapper" id="sliderWrapper">
+            
+            <!-- SLIDE 1 -->
+            <div class="slide slide-1">
+                <h2>Welcome to Smart Kids Academy Dobian</h2>
+                <p>Empowering young minds with quality education and personal guidance right here in Swabi.</p>
+                <div class="slide-btns">
+                    <a href="#attendance" class="hero-btn hero-btn-primary">Daily Attendance</a>
+                    <a href="tel:03356391367" class="hero-btn hero-btn-whatsapp"><i class="fa-solid fa-phone"></i> Call Academy</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="slide slide-2">
+                <h2>Proven Academic Excellence</h2>
+                <p>Small batch sizes ensuring individual attention and conceptual learning for every child.</p>
+                <div class="slide-btns">
+                    <a href="#notices" class="hero-btn hero-btn-primary">View Announcements</a>
+                    <a href="https://wa.me/923105423365" class="hero-btn hero-btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="slide slide-3">
+                <h2>Admissions Open for New Term</h2>
+                <p>Join Smart Kids Academy today to give your child a head start towards a bright future.</p>
+                <div class="slide-btns">
+                    <a href="tel:03105423365" class="hero-btn hero-btn-primary">Inquire Now</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="slider-arrow prev-arrow" id="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-arrow next-arrow" id="nextSlide"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="slider-dots" id="sliderDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="container">
+
+        <!-- ANNOUNCEMENTS ROW (2 STYLISH BOXES) -->
+        <section class="announcements-section" id="notices">
+            <div class="announcement-grid">
+                
+                <!-- BOX 1: ANNOUNCEMENTS -->
+                <div class="announce-card">
+                    <div class="announce-header">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <h3>Latest Announcements</h3>
+                    </div>
+                    <ul class="notice-list">
+                        <li class="notice-item">
+                            <span class="notice-title">Mid-Term Examination Schedule Released</span>
+                            <span class="notice-date">Oct 2026</span>
+                        </li>
+                        <li class="notice-item">
+                            <span class="notice-title">Parent-Teacher Meeting (PTM) this Saturday</span>
+                            <span class="notice-date">This Week</span>
+                        </li>
+                        <li class="notice-item">
+                            <span class="notice-title">Admissions Open for Grade 1 to 8</span>
+                            <span class="notice-date">Active</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BOX 2: HELPDESK -->
+                <div class="announce-card helpdesk">
+                    <div class="announce-header">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <h3>Academy Helpdesk</h3>
+                    </div>
+                    <div class="helpdesk-info">
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <strong>Operating Hours:</strong>
+                                <p style="color: var(--text-muted); font-size: 0.9rem;">Monday - Saturday: 8:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>Campus Address:</strong>
+                                <p style="color: var(--text-muted); font-size: 0.9rem;">Moh, Miangan Dobian Swabi</p>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <strong>Quick Contact:</strong>
+                                <p style="color: var(--text-muted); font-size: 0.9rem;">0335-6391367 / 0310-5423365</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DAILY ATTENDANCE SECTION (TABLE FOR 22 STUDENTS) -->
+        <section class="attendance-section" id="attendance">
+            <div class="section-header">
+                <h2>Daily Student Attendance</h2>
+                <p>Real-time attendance record for Smart Kids Academy students</p>
+            </div>
+
+            <div class="table-card">
+                <div class="table-top-bar">
+                    <span><i class="fa-solid fa-calendar-check"></i> Attendance Board</span>
+                    <span>Total Strength: <strong>22 Students</strong></span>
+                </div>
+                <div class="table-responsive">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Date</th>
+                                <th>Student Name</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- EDIT STUDENT NAMES & STATUS HERE MANUALLY IN CODE -->
+                            <tr>
+                                <td>1</td>
+                                <td>24-Oct-2026</td>
+                                <td>Sudais</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>24-Oct-2026</td>
+                                <td>Wasi Shah</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>24-Oct-2026</td>
+                                <td>Daniyal</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>24-Oct-2026</td>
+                                <td>Shaniyal</td>
+                                <td><span class="badge badge-absent">Absent</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>24-Oct-2026</td>
+                                <td>Zoran</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>24-Oct-2026</td>
+                                <td>Furqan</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>24-Oct-2026</td>
+                                <td>Ayan Kashif</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>24-Oct-2026</td>
+                                <td>Ayan Jawad</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>24-Oct-2026</td>
+                                <td>Anis Nawiz</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>24-Oct-2026</td>
+                                <td>Sanan</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>24-Oct-2026</td>
+                                <td>Mashal</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>24-Oct-2026</td>
+                                <td>Haya</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>24-Oct-2026</td>
+                                <td>Essa</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 14</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 15</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 16</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 17</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 18</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 19</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 20</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 21</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>24-Oct-2026</td>
+                                <td>Student 22</td>
+                                <td><span class="badge badge-present">Present</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Smart Kids Academy</h4>
+                <p style="margin-bottom: 15px; font-size: 0.95rem;">Building strong educational foundations for children in Dobian Swabi with individual care and dedication.</p>
+                <p style="font-size: 0.85rem; color: var(--accent-gold);"><strong>Tagline:</strong> Learn. Grow. Succeed.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#notices">Announcements</a></li>
+                    <li><a href="#attendance">Daily Attendance</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <h4>Contact Campus</h4>
+                <p><i class="fa-solid fa-phone"></i> 0335-6391367</p>
+                <p><i class="fa-brands fa-whatsapp"></i> 0310-5423365</p>
+                <p><i class="fa-solid fa-location-dot"></i> Moh, Miangan Dobian Swabi</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Visit Us</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Parents & guardians are always welcome during working hours.</p>
+                <a href="https://wa.me/923105423365" class="hero-btn hero-btn-whatsapp" style="display: inline-block; padding: 8px 16px; font-size: 0.85rem;">WhatsApp Inquiry</a>
+            </div>
+        </div>
+
+        <div class="copyright-bar">
+            <p>&copy; 2026 Smart Kids Academy Dobian. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // ==========================================
+        // DARK / LIGHT THEME TOGGLE
+        // ==========================================
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const themeText = themeToggleBtn.querySelector('span');
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if(document.body.classList.contains('dark-mode')) {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeText.textContent = 'Light';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeText.textContent = 'Dark';
+            }
+        });
+
+        // ==========================================
+        // HERO SLIDER LOGIC
+        // ==========================================
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateSlider(index) {
+            sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            let nextIndex = (currentIndex + 1) % totalSlides;
+            updateSlider(nextIndex);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            let prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider(prevIndex);
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                let index = parseInt(e.target.getAttribute('data-index'));
+                updateSlider(index);
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            let nextIndex = (currentIndex + 1) % totalSlides;
+            updateSlider(nextIndex);
+        }, 5000);
+    </script>
+</body>
+</html>
